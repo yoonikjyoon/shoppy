@@ -1,7 +1,9 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { initializeApp } from "firebase/app";
+import { FIREBASE_CONFIG } from "./constants/env";
 
 function App() {
+  initializeApp(FIREBASE_CONFIG);
+
   return (
     <>
       <div>Shoppy</div>
