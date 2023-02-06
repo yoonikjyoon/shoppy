@@ -1,10 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import User from "./User";
 
-export default function LoginButton() {
-  return <Container onClick={() => console.log("Login!")}>Login</Container>;
+export default function LoginButton({ user, handleLogin, handleLogout }) {
+  return (
+    <>
+      {!user ? (
+        <Button onClick={handleLogin}>Login</Button>
+      ) : (
+        <>
+          <User user={user} />
+          <Button onClick={handleLogout}>Logout</Button>
+        </>
+      )}
+    </>
+  );
 }
-const Container = styled.button`
+const Button = styled.button`
   padding: 5px 10px;
   border-radius: 5px;
   background-color: var(--lavender-color);

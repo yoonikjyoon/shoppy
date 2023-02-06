@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { HiShoppingCart } from "react-icons/hi";
+import { HiPencil, HiShoppingCart } from "react-icons/hi";
 import LoginButton from "../atoms/LoginButton";
 import { Link } from "react-router-dom";
+import { login, logout, onUserStateChange } from "../../api/firebase";
 
 export default function HeaderElements() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onUserStateChange(setUser);
+  }, []);
+
   return (
     <Container>
       <Link to={"/products"}>Products</Link>
@@ -12,10 +19,19 @@ export default function HeaderElements() {
         <HiShoppingCart
           color="#bdb0ee"
           size="1.5em"
-          style={{ cursor: "pointer", marginTop: 5 }}
+          style={{ cursor: "pointer", marginTop: 3 }}
+          title="go to cart page"
         />
       </Link>
-      <LoginButton />
+      <Link to={"/products/new"}>
+        <HiPencil
+          color="#bdb0ee"
+          size="1.5em"
+          style={{ cursor: "pointer", marginTop: 3 }}
+          title="add new product"
+        />
+      </Link>
+      <LoginButton user={user} handleLogin={login} handleLogout={logout} />
     </Container>
   );
 }
