@@ -36,8 +36,8 @@ export default function HeaderElements() {
   );
 }
 const Container = styled.div`
-  width: 195px;
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 20px;
   align-items: center;
-  justify-content: space-between;
 `;
