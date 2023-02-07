@@ -21,4 +21,7 @@ const Button = styled.button`
   border-radius: 5px;
   background-color: var(--lavender-color);
   color: var(--white-color);
+  &:hover {
+    filter: brightness(1.1);
+  }
 `;
