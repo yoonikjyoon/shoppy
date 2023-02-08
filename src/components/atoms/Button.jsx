@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Button({ text, onClick }) {
-  return <Container onClick={onClick}>{text}</Container>;
+export default function Button({ text, onClick, type = "button" }) {
+  return (
+    <Container type={type} onClick={onClick}>
+      {text}
+    </Container>
+  );
 }
 const Container = styled.button`
   padding: 5px 10px;
