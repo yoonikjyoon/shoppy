@@ -12,7 +12,7 @@ export default function NewProduct() {
   return (
     <Container>
       <StyledTitle>새로운 제품 등록</StyledTitle>
-      <form onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <AnimatedInputForm type="text" name="name" text="제품명" />
         <AnimatedInputForm type="number" name="price" text="가격" />
         <AnimatedInputForm type="text" name="category" text="카테고리" />
@@ -23,7 +23,7 @@ export default function NewProduct() {
           text="옵션들 [콤마(,)로 구분]"
         />
         <Button text="제품 등록하기" type="submit" />
-      </form>
+      </StyledForm>
     </Container>
   );
 }
@@ -34,4 +34,8 @@ const Container = styled.div`
 const StyledTitle = styled.h3`
   text-align: center;
   color: var(--lavender-dark-color);
+`;
+const StyledForm = styled.form`
+  display: grid;
+  grid-gap: 13px;
 `;

@@ -42,10 +42,13 @@ const InputLabel = styled.label`
 `;
 const InputSpan = styled.span`
   font-size: var(--font-small);
-  line-height: var(--font-smaol);
-  color: var(--lavender-very-dark-color);
+  line-height: var(--font-small);
+  color: ${(props) =>
+    props.active
+      ? `var(--lavender-very-dark-color)`
+      : `var(--grey-dark-color)`};
   position: absolute;
-  left: 10px;
+  left: ${(props) => (props.active ? "5px" : "10px")};
   top: ${(props) => (props.active ? "-10px" : "50%")};
   transform: translateY(-50%);
   transition: all 0.25s ease;
@@ -55,7 +58,7 @@ const Input = styled.input`
   border: 1px solid var(--lavender-color);
   border-radius: 5px;
   width: 100%;
-  height: 35px;
+  height: 40px;
   padding: 3px 10px;
   font-size: var(--font-base);
   &:focus {
