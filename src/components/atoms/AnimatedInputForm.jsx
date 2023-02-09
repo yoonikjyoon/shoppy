@@ -4,6 +4,7 @@ import styled from "styled-components";
  * @param type - Type of the form control
  * @param name - Name of the form control
  * @param text - Text for the form control label
+ * @param value - The initial value of the control
  * @param required - Boolean. A value is required or must be check for the form to be submittable
  * @param
  */
@@ -11,23 +12,21 @@ export default function AnimatedInputForm({
   type,
   name,
   text,
+  value,
   required = true,
+  handleChange,
 }) {
   const [isFocus, setIsFocus] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const handleOnChange = (e) => {
-    setInputValue(e.target.value);
-  };
   return (
     <InputLabel htmlFor={name}>
-      <InputSpan active={isFocus || inputValue}>{text}</InputSpan>
+      <InputSpan active={isFocus || value}>{text}</InputSpan>
       <Input
         type={type}
         id={name}
         name={name}
         required={required}
-        value={inputValue}
-        onChange={handleOnChange}
+        value={value}
+        onChange={handleChange}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
       />
