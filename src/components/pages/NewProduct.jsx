@@ -1,28 +1,87 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { addNewProduct } from "../../api/firebase";
+import { uploadImage } from "../../api/uploader";
 import AnimatedInputForm from "../atoms/AnimatedInputForm";
 import Button from "../atoms/Button";
+import ImageUploadForm from "../atoms/ImageUploadForm";
 
 export default function NewProduct() {
+  const [product, setProduct] = useState({});
+  const [file, setFile] = useState(); // image는 url만 넘어가므로 따로 설정
+  const [isUploading, setIsUploading] = useState(false);
+  const [success, setSuccess] = useState();
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "file") {
+      setFile(files && files[0]);
+      return;
+    }
+    setProduct((product) => ({ ...product, [name]: value }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // var name = document.getElementById("name");
-    // console.log(name.value);
+    setIsUploading(true);
+    // 제품의 사진을 Cloudinary에 업로드하고 URL을 획득
+    uploadImage(file)
+      .then((url) => {
+        // Firebase에 새로운 제품을 추가함
+        addNewProduct(product, url).then(() => {
+          setSuccess("성공적으로 제품이 추가되었습니다.");
+          setTimeout(() => {
+            setSuccess(null);
+          }, 4000);
+        });
+      })
+      .finally(() => setIsUploading(false));
   };
   return (
     <Container>
       <StyledTitle>새로운 제품 등록</StyledTitle>
+      {success && <p>✅{success}</p>}
       <StyledForm onSubmit={handleSubmit}>
-        <AnimatedInputForm type="text" name="name" text="제품명" />
-        <AnimatedInputForm type="number" name="price" text="가격" />
-        <AnimatedInputForm type="text" name="category" text="카테고리" />
-        <AnimatedInputForm type="text" name="description" text="제품 설명" />
+        <ImageUploadForm file={file} handleChange={handleChange} />
+        <AnimatedInputForm
+          type="text"
+          name="title"
+          text="제품명"
+          value={product.title ?? ""}
+          handleChange={handleChange}
+        />
+        <AnimatedInputForm
+          type="number"
+          name="price"
+          text="가격"
+          value={product.price ?? ""}
+          handleChange={handleChange}
+        />
+        <AnimatedInputForm
+          type="text"
+          name="category"
+          text="카테고리"
+          value={product.category ?? ""}
+          handleChange={handleChange}
+        />
+        <AnimatedInputForm
+          type="text"
+          name="description"
+          text="제품 설명"
+          value={product.description ?? ""}
+          handleChange={handleChange}
+        />
         <AnimatedInputForm
           type="text"
           name="options"
           text="옵션들 [콤마(,)로 구분]"
+          value={product.options ?? ""}
+          handleChange={handleChange}
         />
-        <Button text="제품 등록하기" type="submit" />
+        <Button
+          text={isUploading ? "업로드중..." : "제품 등록하기"}
+          type="submit"
+          disabled={isUploading}
+        />
       </StyledForm>
     </Container>
   );
@@ -38,4 +97,5 @@ const StyledTitle = styled.h3`
 const StyledForm = styled.form`
   display: grid;
   grid-gap: 13px;
+  margin-top: 15px;
 `;

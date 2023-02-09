@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { v4 as uuid } from "uuid";
 import {
   getAuth,
   signInWithPopup,
@@ -6,7 +7,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, set, child, get } from "firebase/database";
+import { getDatabase, ref, set, get } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -50,15 +51,14 @@ async function adminUser(user) {
     });
 }
 
-// export function writeUserData(userId, name, email, imageUrl) {
-//   set(ref(database, "users/" + userId), {
-//     username: name,
-//     email: email,
-//     profile_picture: imageUrl,
-//   });
-// }
-
-// export function readUserData() {
-//   const dbRef = ref(database);
-//   get(child(dbRef, ``))
-// }
+export async function addNewProduct(product, image) {
+  // 제품마다 고유한 아이디를 위해
+  const id = uuid();
+  return set(ref(database, `products/${id}`), {
+    ...product, // 기존에 있는 product는 그대로 가져오고
+    id,
+    price: parseInt(product.price), // string으로 받아왔으므로
+    image,
+    options: product.options.split(","),
+  });
+}
