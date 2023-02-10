@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import HomeBanner from "../molecules/HomeBanner";
+import Products from "../organisms/Products";
 
 export default function Home() {
-  return <Container>Home</Container>;
+  return (
+    <Container>
+      <HomeBanner />
+      <Products />
+    </Container>
+  );
 }
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   padding: 0 30px;
-  border-top: 1px solid var(--lavender-very-light-color);
 `;

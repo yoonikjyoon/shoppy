@@ -51,6 +51,15 @@ async function adminUser(user) {
     });
 }
 
+export async function getProducts() {
+  return get(ref(database, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  });
+}
+
 export async function addNewProduct(product, image) {
   // 제품마다 고유한 아이디를 위해
   const id = uuid();
