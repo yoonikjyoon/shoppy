@@ -14,7 +14,6 @@ export default function Products() {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <div>Products</div>
       <Container>
         {products &&
           products.map((product) => (

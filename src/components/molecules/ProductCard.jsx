@@ -8,11 +8,11 @@ export default function ProductCard({
     <>
       <Container>
         <ProductImage src={image} alt={title} />
-        <>
+        <ProductCategory>{category}</ProductCategory>
+        <ProductDetail>
           <h3>{title}</h3>
           <p>{`₩${price}`}</p>
-        </>
-        <p>{category}</p>
+        </ProductDetail>
       </Container>
     </>
   );
@@ -29,6 +29,18 @@ const Container = styled.li`
   }
   background-color: var(--white-color);
 `;
+const ProductCategory = styled.p`
+  padding-left: 10px;
+  color: var(--lavender-dark-color);
+  font-size: var(--font-small);
+`;
 const ProductImage = styled.img`
   width: 100%;
+`;
+const ProductDetail = styled.div`
+  width: 100%;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
