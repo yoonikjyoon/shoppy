@@ -5,6 +5,7 @@ export default function Button({
   text,
   onClick,
   type = "button",
+  width,
   height = 35,
   backgroundColor,
   disabled = false,
@@ -13,6 +14,7 @@ export default function Button({
     <Container
       type={type}
       onClick={onClick}
+      width={width}
       height={height}
       backgroundColor={backgroundColor}
       disabled={disabled}
@@ -22,6 +24,7 @@ export default function Button({
   );
 }
 const Container = styled.button`
+  width: ${(props) => (props.width ? `${props.width}%` : "")};
   height: ${(props) => props.height && `${props.height}px`};
   padding: 5px 10px;
   border-radius: 5px;

@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function ProductCard({
-  product: { id, image, title, category, price },
+  product: { id, image, title, category, price, description, options },
 }) {
+  const navigate = useNavigate();
   return (
     <>
-      <Container>
+      <Container
+        onClick={() =>
+          navigate(`/products/${id}`, {
+            state: {
+              product: {
+                id,
+                image,
+                title,
+                category,
+                price,
+                description,
+                options,
+              },
+            },
+          })
+        }
+      >
         <ProductImage src={image} alt={title} />
         <ProductCategory>{category}</ProductCategory>
         <ProductDetail>
