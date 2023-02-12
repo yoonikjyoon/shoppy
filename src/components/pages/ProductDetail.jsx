@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import StyledLine from "../atoms/StyledLine";
@@ -12,6 +12,11 @@ export default function ProductDetail() {
       product: { id, image, title, category, price, description, options },
     },
   } = useLocation();
+  const [selected, setSelected] = useState(options && options[0]);
+  const handleSelect = (e) => setSelected(e.target.value);
+  const handleClick = (e) => {
+    // 장바구니에 추가하기
+  };
   return (
     <Container>
       <CategoryText>&#62; {category}</CategoryText>
@@ -27,16 +32,17 @@ export default function ProductDetail() {
           <StyledPadding height={5} />
           <ProductDescription>{description}</ProductDescription>
           <OptionContainer>
-            <span>옵션</span>
-            <StyledSelect>
-              {options.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
+            <label htmlFor="select">옵션 :</label>
+            <StyledSelect id="select" onChange={handleSelect} value={selected}>
+              {options &&
+                options.map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
             </StyledSelect>
           </OptionContainer>
-          <Button text="장바구니에 추가" width="100" />
+          <Button text="장바구니에 추가" width="100" onClick={handleClick} />
         </ProductDetailContainer>
       </ProductContaienr>
     </Container>
@@ -44,6 +50,7 @@ export default function ProductDetail() {
 }
 const Container = styled.div`
   width: 100vw;
+  min-width: 360px;
   padding: 30px;
 `;
 const CategoryText = styled.p`
@@ -68,10 +75,14 @@ const ProductDescription = styled.p`
 `;
 const OptionContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 9fr;
   height: 35px;
   line-height: 35px;
   margin: 15px 0px;
+  & > label {
+    font-weight: bold;
+    color: var(--lavender-color);
+  }
 `;
 const StyledSelect = styled.select`
   border: 1px dotted var(--grey-dark-color);

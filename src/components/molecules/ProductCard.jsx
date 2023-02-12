@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function ProductCard({
-  product: { id, image, title, category, price, description, options },
+  product,
+  product: { id, image, title, category, price },
 }) {
   const navigate = useNavigate();
   return (
@@ -11,17 +12,7 @@ export default function ProductCard({
       <Container
         onClick={() =>
           navigate(`/products/${id}`, {
-            state: {
-              product: {
-                id,
-                image,
-                title,
-                category,
-                price,
-                description,
-                options,
-              },
-            },
+            state: { product },
           })
         }
       >
