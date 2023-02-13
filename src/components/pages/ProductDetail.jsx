@@ -5,8 +5,11 @@ import StyledLine from "../atoms/StyledLine";
 import StyledPadding from "../atoms/StyledPadding";
 import { formatNumber } from "../../utils/number";
 import Button from "../atoms/Button";
+import { useAuthContext } from "../../context/AuthContext";
+import { addOrUpdateToCart } from "../../api/firebase";
 
 export default function ProductDetail() {
+  const { uid } = useAuthContext();
   const {
     state: {
       product: { id, image, title, category, price, description, options },
@@ -15,7 +18,8 @@ export default function ProductDetail() {
   const [selected, setSelected] = useState(options && options[0]);
   const handleSelect = (e) => setSelected(e.target.value);
   const handleClick = (e) => {
-    // 장바구니에 추가하기
+    const product = { id, image, title, price, option: selected, quantity: 1 };
+    addOrUpdateToCart(uid, product);
   };
   return (
     <Container>
