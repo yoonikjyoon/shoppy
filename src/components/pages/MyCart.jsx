@@ -1,23 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import CartItem from "../molecules/CartItem";
-import { useAuthContext } from "../../context/AuthContext";
-import { useQuery } from "@tanstack/react-query";
-import { getCart } from "../../api/firebase";
 import PriceCard from "../molecules/PriceCard";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaEquals } from "react-icons/fa";
 import Button from "../atoms/Button";
 import StyledPadding from "../atoms/StyledPadding";
+import useCart from "../../hooks/useCart";
 
+const SHIPPING = 3000;
 export default function MyCart() {
-  const SHIPPING = 3000;
-  const { uid } = useAuthContext();
   const {
-    isLoading,
-    error,
-    data: products,
-  } = useQuery(["carts"], () => getCart(uid));
+    cartQuery: { isLoading, data: products },
+  } = useCart();
 
   if (isLoading) return <p>Loading...</p>;
   const hasProducts = products && products.length > 0;
@@ -34,7 +29,7 @@ export default function MyCart() {
         <>
           <ul>
             {products.map((product) => (
-              <CartItem key={product.id} product={product} uid={uid} />
+              <CartItem key={product.id} product={product} />
             ))}
           </ul>
           <PriceContainer>

@@ -5,21 +5,26 @@ import StyledLine from "../atoms/StyledLine";
 import StyledPadding from "../atoms/StyledPadding";
 import { formatNumber } from "../../utils/number";
 import Button from "../atoms/Button";
-import { useAuthContext } from "../../context/AuthContext";
-import { addOrUpdateToCart } from "../../api/firebase";
+import useCart from "../../hooks/useCart";
 
 export default function ProductDetail() {
-  const { uid } = useAuthContext();
+  const { addOrUpdateItem } = useCart();
   const {
     state: {
       product: { id, image, title, category, price, description, options },
     },
   } = useLocation();
+  const [success, setSuccess] = useState();
   const [selected, setSelected] = useState(options && options[0]);
   const handleSelect = (e) => setSelected(e.target.value);
-  const handleClick = (e) => {
+  const handleClick = () => {
     const product = { id, image, title, price, option: selected, quantity: 1 };
-    addOrUpdateToCart(uid, product);
+    addOrUpdateItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess("장바구니에 추가되었습니다.");
+        setTimeout(() => setSuccess(null), 3000);
+      },
+    });
   };
   return (
     <Container>
@@ -46,6 +51,7 @@ export default function ProductDetail() {
                 ))}
             </StyledSelect>
           </OptionContainer>
+          {success && <p>{success}</p>}
           <Button text="장바구니에 추가" width="100" onClick={handleClick} />
         </ProductDetailContainer>
       </ProductContaienr>

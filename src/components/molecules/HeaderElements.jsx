@@ -4,19 +4,23 @@ import { HiPencil, HiShoppingCart } from "react-icons/hi";
 import LoginButton from "../atoms/LoginButton";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
-import { useQuery } from "@tanstack/react-query";
-import { getCart } from "../../api/firebase";
+import useCart from "../../hooks/useCart";
 
 export default function HeaderElements() {
-  const { user, uid, login, logout } = useAuthContext();
-  const { data: products } = useQuery(["carts"], () => getCart(uid));
+  const { user, login, logout } = useAuthContext();
+  const {
+    cartQuery: { data: products },
+  } = useCart();
+
   return (
     <Container>
       <Link to={"/products"}>Products</Link>
       {user && (
         <Link to={"/cart"}>
           <CartWrap>
-            {products.length > 0 && <CartBadge>{products.length}</CartBadge>}
+            {products && products.length > 0 && (
+              <CartBadge>{products.length}</CartBadge>
+            )}
             <HiShoppingCart
               color="#bdb0ee"
               size="1.5em"
