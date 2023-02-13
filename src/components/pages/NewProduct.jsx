@@ -1,24 +1,17 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { addNewProduct } from "../../api/firebase";
 import { uploadImage } from "../../api/uploader";
 import AnimatedInputForm from "../atoms/AnimatedInputForm";
 import Button from "../atoms/Button";
 import ImageUploadForm from "../atoms/ImageUploadForm";
+import useProducts from "../../hooks/useProducts";
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState(); // image는 url만 넘어가므로 따로 설정
   const [isUploading, setIsUploading] = useState(false);
   const [success, setSuccess] = useState();
-  const queryClient = useQueryClient();
-  const addProduct = useMutation(
-    ({ product, url }) => addNewProduct(product, url),
-    {
-      onSuccess: () => queryClient.invalidateQueries(["products"]),
-    }
-  );
+  const { addProduct } = useProducts();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
