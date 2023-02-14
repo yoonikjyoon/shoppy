@@ -27,11 +27,12 @@
 
 :root {
   /* Color */
-  --color-lavender: #9794f9;
+  /* --color-lavender: #9794f9; */
+  --color-lavender: rgb(117, 119, 199);
   --color-white: rgb(255, 255, 255);
   --color-black: rgb(0, 0, 0);
-  --color-lavender-very-light: rgb(219, 219, 234);
-  --color-lavender-light: rgb(186, 186, 233);
+  --color-lavender-very-light: rgb(220, 220, 234);
+  --color-lavender-light: rgb(185, 185, 233);
   --color-lavender: rgb(144, 144, 228);
   --color-lavender-dark: rgb(94, 94, 150);
   --color-lavender-very-dark: rgb(69, 69, 111);

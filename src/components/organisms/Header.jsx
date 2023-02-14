@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Logo from "../atoms/Logo";
 import HeaderElements from "../molecules/HeaderElements";
 
 export default function Header() {
   return (
     <HeaderWrap>
-      <Logo />
+      <Link to={"/"}>
+        <Logo />
+      </Link>
       <HeaderElements />
     </HeaderWrap>
   );

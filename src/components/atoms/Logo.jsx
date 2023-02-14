@@ -1,26 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import { HiShoppingBag } from "react-icons/hi";
-import { Link } from "react-router-dom";
 
-export default function Logo() {
+export default function Logo({ size = 50, showName = true }) {
   return (
-    <Link to={"/"}>
-      <LogoWrap>
-        <HiShoppingBag
-          color="#9794f9"
-          size="2rem"
-          style={{ marginRight: "5px" }}
-        />
-        Shoppy
-      </LogoWrap>
-    </Link>
+    <LogoWrap width={size} height={size}>
+      <img src={require("../../static/images/logo_white.png")} alt="shoppy" />
+      {showName && <span>Shoppy</span>}
+    </LogoWrap>
   );
 }
 const LogoWrap = styled.div`
   display: flex;
   align-items: center;
   margin-right: 20px;
+  font-family: var(--font-cutive);
   font-size: var(--font-x-large);
-  color: var(--color-lavender-very-dark);
+  font-weight: bold;
+  color: var(--color-lavender-light);
+  & > img {
+    width: ${(props) => `${props.width}px`};
+    height: ${(props) => `${props.height}px`};
+    filter: invert(0%) sepia(46%) saturate(2000%) hue-rotate(188deg)
+      brightness(111%) contrast(82%);
+  }
 `;

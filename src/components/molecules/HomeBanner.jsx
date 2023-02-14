@@ -6,7 +6,7 @@ export default function HomeBanner() {
   return (
     <Container>
       <BackgroundImage
-        src={require("../../assets/bgImage.JPG")}
+        src={require("../../static/images/bgImage.JPG")}
         alt="background image in home banner"
       />
       <BackgroundContainer>
