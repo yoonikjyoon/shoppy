@@ -50,35 +50,35 @@ export default function NewProduct() {
           type="text"
           name="title"
           text="제품명"
-          value={product.title ?? ""}
+          value={product.title || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="number"
           name="price"
           text="가격"
-          value={product.price ?? ""}
+          value={product.price || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="text"
           name="category"
           text="카테고리"
-          value={product.category ?? ""}
+          value={product.category || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="text"
           name="description"
           text="제품 설명"
-          value={product.description ?? ""}
+          value={product.description || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="text"
           name="options"
           text="옵션들 [콤마(,)로 구분]"
-          value={product.options ?? ""}
+          value={product.options || ""}
           handleChange={handleChange}
         />
         <Button

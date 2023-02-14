@@ -1,12 +1,30 @@
-*,
-*::before,
-*::after {
-  font-family: "Spoqa Han Sans", "sans-serif";
-  -webkit-tap-highlight-color: transparent;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: "Cutive Mono";
+  src: url("./static/fonts/CutiveMono-Regular.woff"),
+    url("./static/fonts/CutiveMono-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
 }
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-display: swap;
+  src: url("./static/fonts/Pretendard-Regular.woff");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 300;
+  font-display: swap;
+  src: url("./static/fonts/Pretendard-Light.woff");
+}
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-display: swap;
+  src: url("./static/fonts/Pretendard-Bold.woff");
+}
+
 :root {
   /* Color */
   --white-color: #fff;
@@ -20,6 +38,10 @@
   --grey-light-color: #e0e0e0;
   --logo-color: #9794f9;
 
+  /* Font */
+  --font-pretendard: "Pretendard";
+  --font-cutive: "Cutive Mono";
+
   /* Font Size */
   --font-micro: 0.5rem;
   --font-small: 0.8rem;
@@ -30,23 +52,27 @@
   --font-3x-large: 2.441rem;
   --font-4x-large: 3.052rem;
 }
-html {
-  background-color: var(--white-color);
-  width: 100vw;
-  height: 100vh;
-}
-body {
+*,
+*::before,
+*::after {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Spoqa Han Sans", "sans-serif";
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  font-family: "Pretendard";
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body {
+  margin: 0;
+}
 ::-webkit-scrollbar {
   display: none;
-}
-
-code {
-  font-family: "Spoqa Han Sans", "sans-serif";
 }
 a {
   background-color: transparent;

@@ -21,6 +21,7 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   position: relative;
+  padding-top: 30px;
 `;
 const BackgroundImage = styled.img`
   width: 100%;
@@ -35,4 +36,5 @@ const BackgroundContainer = styled.div`
   transform: translate(-50%, -75%);
   text-align: center;
   color: var(--white-color);
+  font-family: var(--font-cutive);
 `;
