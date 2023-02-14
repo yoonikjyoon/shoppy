@@ -27,16 +27,17 @@
 
 :root {
   /* Color */
-  --white-color: #fff;
-  --black-color: #140a00;
-  --lavender-very-light-color: #ebe7ff;
-  --lavender-light-color: #e9cbff;
-  --lavender-color: #bdb0ee;
-  --lavender-dark-color: #5d5477;
-  --lavender-very-dark-color: #3e3b49;
-  --grey-dark-color: #909090;
-  --grey-light-color: #e0e0e0;
-  --logo-color: #9794f9;
+  --color-lavender: #9794f9;
+  --color-white: rgb(255, 255, 255);
+  --color-black: rgb(0, 0, 0);
+  --color-lavender-very-light: rgb(219, 219, 234);
+  --color-lavender-light: rgb(186, 186, 233);
+  --color-lavender: rgb(144, 144, 228);
+  --color-lavender-dark: rgb(94, 94, 150);
+  --color-lavender-very-dark: rgb(69, 69, 111);
+  --color-gray-light: rgb(183, 181, 190);
+  --color-gray: rgb(126, 125, 130);
+  --color-gray-dark: rgb(75, 74, 77);
 
   /* Font */
   --font-pretendard: "Pretendard";

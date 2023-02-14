@@ -10,5 +10,5 @@ const FooterWrap = styled.footer`
   padding: 0 30px;
   display: flex;
   align-items: center;
-  border: 1px solid var(--lavender-very-light-color);
+  border: 1px solid var(--color-lavender-very-light);
 `;

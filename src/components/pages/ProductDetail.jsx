@@ -64,7 +64,7 @@ const Container = styled.div`
   padding: 30px;
 `;
 const CategoryText = styled.p`
-  color: var(--grey-dark-color);
+  color: var(--color-gray-dark);
 `;
 const ProductContaienr = styled.div`
   display: grid;
@@ -81,7 +81,7 @@ const ProductDetailContainer = styled.div`
   padding: 15px 20px;
 `;
 const ProductDescription = styled.p`
-  color: var(--grey-dark-color);
+  color: var(--color-gray-dark);
 `;
 const OptionContainer = styled.div`
   display: grid;
@@ -91,11 +91,11 @@ const OptionContainer = styled.div`
   margin: 15px 0px;
   & > label {
     font-weight: bold;
-    color: var(--lavender-color);
+    color: var(--color-lavender);
   }
 `;
 const StyledSelect = styled.select`
-  border: 1px dotted var(--grey-dark-color);
+  border: 1px dotted var(--color-gray-dark);
   border-radius: 5px;
   padding: 0px 3px;
   &:focus {

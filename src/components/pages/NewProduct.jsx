@@ -96,7 +96,7 @@ const Container = styled.div`
 `;
 const StyledTitle = styled.h3`
   text-align: center;
-  color: var(--lavender-dark-color);
+  color: var(--color-lavender-dark);
 `;
 const StyledForm = styled.form`
   display: grid;

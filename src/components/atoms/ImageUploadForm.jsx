@@ -30,13 +30,13 @@ export default function ImageUploadForm({ file, handleChange }) {
 }
 const Container = styled.div`
   display: flex;
-  border: 1px solid var(--lavender-color);
+  border: 1px solid var(--color-lavender);
   border-radius: 5px;
   width: 100%;
   min-height: 150px;
   padding: 10px;
   text-align: center;
-  color: var(--grey-dark-color);
+  color: var(--color-gray-dark);
 `;
 const InnerContainer = styled.div`
   margin: auto;
@@ -47,8 +47,8 @@ const InputImage = styled.img`
 const InputButton = styled.label`
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: var(--grey-light-color);
-  color: var(--white-color);
+  background-color: var(--color-gray-light);
+  color: var(--color-white);
   &:hover {
     filter: brightness(1.1);
   }

@@ -15,14 +15,14 @@ export default function PriceCard({ text, price }) {
 const Container = styled.div`
   border-radius: 10px;
   padding: 30px;
-  background-color: var(--lavender-very-light-color);
+  background-color: var(--color-lavender-very-light);
   text-align: center;
   flex-shrink: 0;
 `;
 const ContainerText = styled.p`
-  color: var(--lavender-dark-color);
+  color: var(--color-lavender-dark);
 `;
 const PriceText = styled.p`
   font-weight: bold;
-  color: var(--logo-color);
+  color: var(--color-lavender);
 `;

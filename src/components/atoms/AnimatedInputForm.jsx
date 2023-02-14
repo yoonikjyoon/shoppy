@@ -44,8 +44,8 @@ const InputSpan = styled.span`
   line-height: var(--font-small);
   color: ${(props) =>
     props.active
-      ? `var(--lavender-very-dark-color)`
-      : `var(--grey-dark-color)`};
+      ? `var(--color-lavender-very-dark)`
+      : `var(--color-gray-dark)`};
   position: absolute;
   left: ${(props) => (props.active ? "5px" : "10px")};
   top: ${(props) => (props.active ? "-10px" : "50%")};
@@ -54,14 +54,14 @@ const InputSpan = styled.span`
   pointer-events: none;
 `;
 const Input = styled.input`
-  border: 1px solid var(--lavender-color);
+  border: 1px solid var(--color-lavender);
   border-radius: 5px;
   width: 100%;
   height: 40px;
   padding: 3px 10px;
   font-size: var(--font-base);
   &:focus {
-    border: 1px solid var(--lavender-color);
+    border: 1px solid var(--color-lavender);
     border-radius: 5px;
   }
 `;

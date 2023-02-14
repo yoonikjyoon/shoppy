@@ -62,7 +62,7 @@ const PriceContainer = styled.div`
   align-items: center;
   justify-content: space-around;
   & > svg {
-    fill: var(--logo-color);
+    fill: var(--color-lavender);
     flex-shrink: 0;
   }
 `;

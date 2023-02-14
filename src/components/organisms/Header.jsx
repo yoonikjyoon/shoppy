@@ -19,5 +19,5 @@ const HeaderWrap = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--lavender-very-light-color);
+  border-bottom: 1px solid var(--color-lavender-very-light);
 `;

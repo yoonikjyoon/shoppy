@@ -28,7 +28,7 @@ export default function ProductCard({
 }
 const Container = styled.li`
   cursor: pointer;
-  border: 1px solid var(--grey-light-color);
+  border: 1px solid var(--color-gray-light);
   border-radius: 8px;
   -webkit-box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.4);
   box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.4);
@@ -36,11 +36,11 @@ const Container = styled.li`
   &:hover {
     transform: scale(1.05);
   }
-  background-color: var(--white-color);
+  background-color: var(--color-white);
 `;
 const ProductCategory = styled.p`
   padding-left: 10px;
-  color: var(--lavender-dark-color);
+  color: var(--color-lavender-dark);
   font-size: var(--font-small);
 `;
 const ProductImage = styled.img`

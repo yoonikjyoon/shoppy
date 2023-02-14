@@ -22,5 +22,5 @@ const LogoWrap = styled.div`
   align-items: center;
   margin-right: 20px;
   font-size: var(--font-x-large);
-  color: var(--lavender-very-dark-color);
+  color: var(--color-lavender-very-dark);
 `;

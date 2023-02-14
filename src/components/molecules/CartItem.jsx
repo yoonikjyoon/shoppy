@@ -52,7 +52,7 @@ const Container = styled.li`
   padding: 10px 0px;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  border-bottom: 1px solid var(--lavender-very-light-color);
+  border-bottom: 1px solid var(--color-lavender-very-light);
 `;
 const StyledImage = styled.div`
   margin: auto;
@@ -73,9 +73,9 @@ const ItemInfo = styled.div`
   grid-gap: 5px;
 `;
 const ItemText = styled.p`
-  color: var(--lavender-dark-color);
+  color: var(--color-lavender-dark);
   & > b {
-    color: var(--logo-color);
+    color: var(--color-lavender);
   }
 `;
 const ItemQuantity = styled.div`

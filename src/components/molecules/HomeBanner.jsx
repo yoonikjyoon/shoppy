@@ -35,6 +35,6 @@ const BackgroundContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -75%);
   text-align: center;
-  color: var(--white-color);
+  color: var(--color-white);
   font-family: var(--font-cutive);
 `;

@@ -56,8 +56,8 @@ const CartWrap = styled.div`
 const CartBadge = styled.div`
   position: absolute;
   border-radius: 9999px;
-  background-color: var(--lavender-light-color);
-  color: var(--white-color);
+  background-color: var(--color-lavender-light);
+  color: var(--color-white);
   font-size: var(--font-micro);
   font-weight: bold;
   top: -1px;

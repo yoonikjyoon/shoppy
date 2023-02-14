@@ -29,8 +29,8 @@ const Container = styled.button`
   padding: 5px 10px;
   border-radius: 5px;
   background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : `var(--lavender-color)`};
-  color: var(--white-color);
+    props.backgroundColor ? props.backgroundColor : `var(--color-lavender)`};
+  color: var(--color-white);
   &:hover {
     filter: brightness(1.1);
   }
