@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Logo({ size = 50, showName = true }) {
+const LogoSize = 40;
+export default function Logo({ size = LogoSize, showName = true }) {
   return (
     <LogoWrap width={size} height={size}>
       <img src={require("../../static/images/logo_white.png")} alt="shoppy" />

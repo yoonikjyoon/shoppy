@@ -21,11 +21,10 @@ const Container = styled.div`
   width: 100%;
   height: auto;
   position: relative;
-  padding-top: 30px;
 `;
 const BackgroundImage = styled.img`
   width: 100%;
-  height: 400px;
+  height: 330px;
   object-fit: cover;
   object-position: 50% 60%;
 `;

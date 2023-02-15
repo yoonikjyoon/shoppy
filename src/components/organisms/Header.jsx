@@ -2,25 +2,32 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../atoms/Logo";
-import HeaderElements from "../molecules/HeaderElements";
+import NavbarRight from "../molecules/NavbarRight";
+import NavbarLeft from "../molecules/NavbarLeft";
 
 export default function Header() {
   return (
     <HeaderWrap>
+      <NavbarLeft />
       <Link to={"/"}>
         <Logo />
       </Link>
-      <HeaderElements />
+      <NavbarRight />
     </HeaderWrap>
   );
 }
 
 const HeaderWrap = styled.header`
   width: 100vw;
-  height: 100px;
-  padding: 0 30px;
-  display: flex;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 0.5px solid var(--color-lavender-very-light);
+  position: fixed;
+  top: 0px;
+  z-index: var(--z-layer-7);
+  background-color: var(--color-white);
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr auto 1fr;
+  grid-gap: 1rem;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--color-lavender-very-light);
 `;

@@ -27,7 +27,6 @@
 
 :root {
   /* Color */
-  /* --color-lavender: #9794f9; */
   --color-lavender: rgb(117, 119, 199);
   --color-white: rgb(255, 255, 255);
   --color-black: rgb(0, 0, 0);
@@ -53,6 +52,17 @@
   --font-2x-large: 1.953rem;
   --font-3x-large: 2.441rem;
   --font-4x-large: 3.052rem;
+  /* Z index */
+  --z-base: 0;
+  --z-layer-1: 100;
+  --z-layer-2: 200;
+  --z-layer-3: 300;
+  --z-layer-4: 400;
+  --z-layer-5: 500;
+  --z-layer-6: 600;
+  --z-layer-7: 700;
+  --z-layer-8: 800;
+  --z-layer-9: 900;
 }
 *,
 *::before,
@@ -113,6 +123,8 @@ input:focus {
   border: none;
   cursor: pointer;
   outline: none;
+  background-color: transparent;
+  background-image: none;
 }
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {

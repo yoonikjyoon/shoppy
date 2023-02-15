@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import useCart from "../../hooks/useCart";
 
-export default function HeaderElements() {
+export default function NavbarRight() {
   const { user, login, logout } = useAuthContext();
   const {
     cartQuery: { data: products },
@@ -14,7 +14,6 @@ export default function HeaderElements() {
 
   return (
     <Container>
-      <Link to={"/products"}>Products</Link>
       {user && (
         <Link to={"/cart"}>
           <CartWrap>
@@ -23,7 +22,7 @@ export default function HeaderElements() {
             )}
             <HiShoppingCart
               color="#bdb0ee"
-              size="1.5em"
+              size="1.5rem"
               style={{ cursor: "pointer", marginTop: 3 }}
               title="go to cart page"
             />

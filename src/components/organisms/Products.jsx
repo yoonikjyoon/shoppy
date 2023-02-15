@@ -23,6 +23,7 @@ export default function Products() {
 const Container = styled.ul`
   display: grid;
   grid-gap: 20px;
+  padding: 0 30px;
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
