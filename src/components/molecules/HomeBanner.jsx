@@ -30,6 +30,7 @@ const BackgroundImage = styled.img`
 `;
 const BackgroundContainer = styled.div`
   position: absolute;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -75%);
