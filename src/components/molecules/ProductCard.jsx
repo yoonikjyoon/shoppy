@@ -28,10 +28,10 @@ export default function ProductCard({
 }
 const Container = styled.li`
   cursor: pointer;
-  border: 1px solid var(--color-gray-light);
-  border-radius: 8px;
-  -webkit-box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.4);
+  border: 0.5px solid var(--color-lavender-very-light);
+  border-radius: 5px;
+  -webkit-box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   &:hover {
     transform: scale(1.05);
