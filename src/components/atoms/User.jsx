@@ -14,7 +14,7 @@ export default function User({ user: { photoURL, displayName } }) {
 }
 
 const UserImage = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 `;

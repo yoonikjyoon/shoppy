@@ -27,7 +27,6 @@ const HeaderWrap = styled.header`
   background-color: var(--color-white);
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 1fr auto 1fr;
-  grid-gap: 1rem;
+  grid-template-columns: 1.2fr 2fr 0.8fr;
   align-items: center;
 `;

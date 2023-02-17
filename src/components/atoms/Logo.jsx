@@ -13,7 +13,7 @@ export default function Logo({ size = LogoSize, showName = true }) {
 const LogoWrap = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  justify-content: center;
   font-family: var(--font-cutive);
   font-size: var(--font-x-large);
   font-weight: bold;
