@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { HiPencil, HiShoppingCart } from "react-icons/hi";
 import { Mobile, Desktop } from "../../hooks/useResponsive";
 import LoginButton from "../atoms/LoginButton";
 import { Link } from "react-router-dom";

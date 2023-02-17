@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Mobile, Desktop } from "../../hooks/useResponsive";
 import { TbMenu } from "react-icons/tb";
 import { useAuthContext } from "../../context/AuthContext";
-import useCart from "../../hooks/useCart";
 import StyledLine from "../atoms/StyledLine";
 import StyledPadding from "../atoms/StyledPadding";
 import useBodyScroll from "../../hooks/useBodyScroll";
@@ -12,7 +11,7 @@ import useBodyScroll from "../../hooks/useBodyScroll";
 export default function NavbarLeft() {
   const navigate = useNavigate();
   const { lockScroll, openScroll } = useBodyScroll();
-  const { user, login, logout } = useAuthContext();
+  const { user } = useAuthContext();
   const [isShow, setIsShow] = useState(false);
   const handleClick = () => {
     setIsShow((prev) => !prev);
