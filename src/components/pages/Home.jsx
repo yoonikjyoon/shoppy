@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import StyledPadding from "../atoms/StyledPadding";
 import HomeBanner from "../molecules/HomeBanner";
 import Products from "../organisms/Products";
 
