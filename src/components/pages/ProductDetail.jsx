@@ -62,6 +62,7 @@ const Container = styled.div`
   width: 100vw;
   min-width: 360px;
   padding: 30px;
+  margin-top: 3.5rem;
 `;
 const CategoryText = styled.p`
   color: var(--color-gray-dark);

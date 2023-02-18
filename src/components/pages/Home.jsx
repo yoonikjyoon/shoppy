@@ -7,11 +7,17 @@ export default function Home() {
   return (
     <Container>
       <HomeBanner />
-      <Products />
+      <ProductContainer>
+        <Products />
+      </ProductContainer>
     </Container>
   );
 }
 const Container = styled.div`
   width: 100%;
   margin-top: 3.5rem;
+`;
+const ProductContainer = styled.div`
+  padding: 0 30px;
+  margin-top: -3.5rem;
 `;

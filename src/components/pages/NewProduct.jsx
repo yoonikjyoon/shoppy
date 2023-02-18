@@ -92,7 +92,8 @@ export default function NewProduct() {
 }
 const Container = styled.div`
   padding: 30px;
-  width: 100vw;
+  width: 100%;
+  margin-top: 3.5rem;
 `;
 const StyledTitle = styled.h3`
   text-align: center;
