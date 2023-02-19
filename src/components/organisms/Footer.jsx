@@ -2,13 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 export default function Footer() {
-  return <FooterWrap>Footer</FooterWrap>;
+  return (
+    <FooterWrap>
+      <Container>Footer</Container>
+    </FooterWrap>
+  );
 }
 const FooterWrap = styled.footer`
   width: 100vw;
-  height: 50px;
-  padding: 0 30px;
+  padding: 30px 0px;
+  border-top: 1px solid var(--color-lavender-very-light);
+`;
+const Container = styled.div`
+  padding: 0px 30px;
   display: flex;
   align-items: center;
-  border: 1px solid var(--color-lavender-very-light);
 `;
