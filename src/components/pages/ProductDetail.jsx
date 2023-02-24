@@ -86,7 +86,7 @@ const ProductDescription = styled.p`
 `;
 const OptionContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 9fr;
+  grid-template-columns: 1fr 5fr;
   height: 35px;
   line-height: 35px;
   margin: 15px 0px;
@@ -99,6 +99,7 @@ const StyledSelect = styled.select`
   border: 1px dotted var(--color-gray-dark);
   border-radius: 5px;
   padding: 0px 3px;
+  height: inherit;
   &:focus {
     outline: none;
   }

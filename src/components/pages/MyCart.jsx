@@ -55,6 +55,7 @@ export default function MyCart() {
 const Container = styled.div`
   width: 100vw;
   padding: 30px;
+  margin-top: 3.5rem;
 `;
 const PriceContainer = styled.div`
   margin-top: 20px;
