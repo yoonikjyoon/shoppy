@@ -66,4 +66,7 @@ const ProductDetail = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
+  & > h3 {
+    color: var(--color-gray-dark);
+  }
 `;
