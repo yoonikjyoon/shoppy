@@ -36,7 +36,7 @@ export default function ProductDetail() {
         <ProductDetailContainer>
           <h3>{title}</h3>
           <StyledPadding height={5} />
-          <p>{`₩ ${formatNumber(price)}`}</p>
+          <p>{`$ ${formatNumber(price)}`}</p>
           <StyledLine />
           <StyledPadding height={5} />
           <ProductDescription>{description}</ProductDescription>

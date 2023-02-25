@@ -51,10 +51,17 @@ async function adminUser(user) {
     });
 }
 
-export async function getProducts() {
+export async function getProducts(category) {
   return get(ref(database, "products")).then((snapshot) => {
     if (snapshot.exists()) {
-      return Object.values(snapshot.val());
+      if (category) {
+        const data = Object.values(snapshot.val()).filter(
+          (item) => item.category === category
+        );
+        return data;
+      } else {
+        return Object.values(snapshot.val());
+      }
     }
     return [];
   });
@@ -70,6 +77,9 @@ export async function addNewProduct(product, image) {
     image,
     options: product.options.split(","),
   });
+}
+export async function removeFromProduct(id) {
+  return remove(ref(database, `products/${id}`));
 }
 
 export async function getCart(userId) {

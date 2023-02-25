@@ -20,7 +20,7 @@ export default function ProductCard({
         <ProductCategory>{category}</ProductCategory>
         <ProductDetail>
           <h3>{title}</h3>
-          <p>{`₩${price}`}</p>
+          <p>{`$${price}`}</p>
         </ProductDetail>
       </Container>
     </>

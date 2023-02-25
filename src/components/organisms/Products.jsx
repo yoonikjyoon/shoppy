@@ -2,11 +2,14 @@ import React from "react";
 import ProductCard from "../molecules/ProductCard";
 import styled from "styled-components";
 import useProducts from "../../hooks/useProducts";
+import { useParams } from "react-router-dom";
 
 export default function Products() {
+  const { type } = useParams();
+  const category = type && type.charAt(0).toUpperCase() + type.slice(1);
   const {
     productsQuery: { isLoading, error, data: products },
-  } = useProducts();
+  } = useProducts(category);
   return (
     <>
       {isLoading && <p>Loading...</p>}

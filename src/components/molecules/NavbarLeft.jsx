@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Mobile, Desktop } from "../../hooks/useResponsive";
 import { TbMenu } from "react-icons/tb";
 import { useAuthContext } from "../../context/AuthContext";
@@ -43,16 +43,22 @@ export default function NavbarLeft() {
               <MenuItem onClick={() => handleNavigate("products")}>
                 Shop All
               </MenuItem>
-              <MenuItem onClick={() => handleNavigate("products")}>
+              <MenuItem
+                onClick={() => handleNavigate("products/category/women")}
+              >
                 Women
               </MenuItem>
-              <MenuItem onClick={() => handleNavigate("products")}>
+              <MenuItem onClick={() => handleNavigate("products/category/men")}>
                 Men
               </MenuItem>
-              <MenuItem onClick={() => handleNavigate("products")}>
+              <MenuItem
+                onClick={() => handleNavigate("products/category/shoes")}
+              >
                 Shoes
               </MenuItem>
-              <MenuItem onClick={() => handleNavigate("products")}>
+              <MenuItem
+                onClick={() => handleNavigate("products/category/accessories")}
+              >
                 Accessories
               </MenuItem>
               {user && user.isAdmin && (
@@ -70,10 +76,20 @@ export default function NavbarLeft() {
       </Mobile>
       <Desktop>
         <MenuListColumn>
-          <Link to={"/products"}>Women</Link>
-          <Link to={"/products"}>Men</Link>
-          <Link to={"/products"}>Shoes</Link>
-          <Link to={"/products"}>Accessories</Link>
+          <MenuItem onClick={() => handleNavigate("products/category/women")}>
+            Women
+          </MenuItem>
+          <MenuItem onClick={() => handleNavigate("products/category/men")}>
+            Men
+          </MenuItem>
+          <MenuItem onClick={() => handleNavigate("products/category/shoes")}>
+            Shoes
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleNavigate("products/category/accessories")}
+          >
+            Accessories
+          </MenuItem>
         </MenuListColumn>
       </Desktop>
     </Container>
