@@ -16,12 +16,16 @@ export default function ProductCard({
           })
         }
       >
-        <ProductImage src={image} alt={title} />
-        <ProductCategory>{category}</ProductCategory>
-        <ProductDetail>
-          <h3>{title}</h3>
-          <p>{`$${price}`}</p>
-        </ProductDetail>
+        <ImageWrap>
+          <ProductImage src={image} alt={title} />
+        </ImageWrap>
+        <DetailWrap>
+          <ProductCategory>{category}</ProductCategory>
+          <ProductDetail>
+            <h3>{title}</h3>
+            <p>{`$${price}`}</p>
+          </ProductDetail>
+        </DetailWrap>
       </Container>
     </>
   );
@@ -38,18 +42,28 @@ const Container = styled.li`
   }
   background-color: var(--color-white);
 `;
-const ProductCategory = styled.p`
-  padding-left: 10px;
-  color: var(--color-lavender-dark);
-  font-size: var(--font-small);
+const ImageWrap = styled.div`
+  width: 100%;
+  height: 350px;
 `;
 const ProductImage = styled.img`
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+const DetailWrap = styled.div`
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+`;
+const ProductCategory = styled.p`
+  color: var(--color-lavender-dark);
+  font-size: var(--font-small);
 `;
 const ProductDetail = styled.div`
   width: 100%;
-  padding: 5px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 10px;
 `;
