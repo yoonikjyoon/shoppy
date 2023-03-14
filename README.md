@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Shoppy 
+This project is online shopping website built with __React__ and __Firebase Realtime DB__.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Click to check out 👉 (https://yooni-shoppy.netlify.app/)
 
-## Available Scripts
+<img src="https://user-images.githubusercontent.com/118039042/224929804-6fca478f-1d6d-4c74-8d97-47275af253ce.png" width="25%"/>
 
-In the project directory, you can run:
+<br/>
 
-### `yarn start`
+## 🫧 Tech Stack 🫧
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"><img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img src="https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white"><br/>
+<img src="https://img.shields.io/badge/Context API-61DAFB?style=for-the-badge&logo=contextapi&logoColor=white"/><img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&amp;logo=styled-components&amp;logoColor=white" /><img src="https://img.shields.io/badge/TanStack Query-E6903F?style=for-the-badge&amp;logo=tanstack&amp;logoColor=white" />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br/>
 
-### `yarn test`
+## 🫧 Features and Demo 🫧
+<img width="50%" src="https://user-images.githubusercontent.com/118039042/224942835-433a3ef1-d329-4fc8-8031-ae9d7f4315ee.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 1️⃣ Fully responsive design for mobile devices
+- 2️⃣ Fetch data using Firebase Realtime Database when display items, users add items to the shopping cart or the admin users add new products
+- 3️⃣ Login and Logout using Firebase Authentication
+- 4️⃣ Sort items by product categories
+- 5️⃣ The admin can add new products on the Admin page
+- 6️⃣ Product images are uploaded to Cloudinary
+- 7️⃣ Manage State with Tanstack React Query
 
-### `yarn build`
+<br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🫧 Things for improvement 🫧
+This project is still in its early stages and serves as a foundation for more advanced features. Some points that could be improved : 
+- [ ] Add Sign in feature
+- [ ] Add loading and error pages
+- [ ] Partial data retrieval from the server to improve initial loading speed (infinite scroll)
+- [ ] Add test account for Admin page
+- [ ] Improve UI/UX when users add items to the shopping cart or the admin users add new products
+- [ ] Improve CRUD features on Admin page
+- [ ] Add search by keyword
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
