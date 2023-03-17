@@ -7,7 +7,22 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, set, get, remove } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  query,
+  remove,
+  limitToLast,
+  limitToFirst,
+  startAfter,
+  endAt,
+  orderBy,
+  orderByKey,
+  startAt,
+  orderByChild,
+} from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -51,16 +66,41 @@ async function adminUser(user) {
     });
 }
 
-export async function getProducts(category) {
-  return get(ref(database, "products")).then((snapshot) => {
+// export async function getProducts(category) {
+//   return get(ref(database, "products")).then((snapshot) => {
+//     if (snapshot.exists()) {
+//       if (category) {
+//         const data = Object.values(snapshot.val()).filter(
+//           (item) => item.category === category
+//         );
+//         return data;
+//       } else {
+//         return Object.values(snapshot.val());
+//       }
+//     }
+//     return [];
+//   });
+// }
+const ITEMS_PER_PAGE = 12;
+export async function getProducts(category, lastKey) {
+  // console.log(lastKey);
+  const limit = lastKey
+    ? query(
+        ref(database, "products"),
+        orderByKey(),
+        startAfter(lastKey),
+        limitToFirst(ITEMS_PER_PAGE)
+      )
+    : query(ref(database, "products"), limitToFirst(ITEMS_PER_PAGE));
+  return get(limit).then((snapshot) => {
     if (snapshot.exists()) {
+      // console.log(lastKey, "---", snapshot.val());
+      const itemList = Object.values(snapshot.val());
       if (category) {
-        const data = Object.values(snapshot.val()).filter(
-          (item) => item.category === category
-        );
+        const data = itemList.filter((item) => item.category === category);
         return data;
       } else {
-        return Object.values(snapshot.val());
+        return itemList;
       }
     }
     return [];

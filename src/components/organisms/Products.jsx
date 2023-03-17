@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../molecules/ProductCard";
 import styled from "styled-components";
 import useProducts from "../../hooks/useProducts";
 import { useParams } from "react-router-dom";
+import Button from "../atoms/Button";
 
 export default function Products() {
   const { type } = useParams();
   const category = type && type.charAt(0).toUpperCase() + type.slice(1);
+  const [lastKey, setLastKey] = useState(null);
   const {
     productsQuery: { isLoading, error, data: products },
-  } = useProducts(category);
+  } = useProducts(category, lastKey);
+  const [itemList, setItemList] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
+  useEffect(() => {
+    if (products) {
+      // console.log(products);
+      setItemList([...itemList, ...Object.values(products)]);
+    }
+  }, [products]);
+
+  const handleLoadMore = () => {
+    setLastKey(products.at(products.length - 1).id);
+    // console.log(products.length);
+  };
   return (
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <Container>
-        {products &&
-          products.map((product) => (
+        {itemList.length > 0 &&
+          itemList.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        <Button
+          text="more"
+          onClick={() => handleLoadMore()}
+          disabled={!hasMore}
+        />
       </Container>
     </>
   );
