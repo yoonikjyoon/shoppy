@@ -14,16 +14,26 @@ export default function Products() {
   } = useProducts(category, lastKey);
   const [itemList, setItemList] = useState([]);
   const [hasMore, setHasMore] = useState(true);
+
+  // useEffect(() => {
+  //   console.log("category : ", category);
+  //   setItemList([]);
+  // }, [category]);
+
   useEffect(() => {
+    console.log("~~~~");
     if (products) {
-      // console.log(products);
+      console.log(products.length, isLoading, products);
+      setHasMore(true);
       setItemList([...itemList, ...Object.values(products)]);
+    } else {
+      console.log("end", isLoading);
+      setHasMore(false);
     }
   }, [products]);
 
   const handleLoadMore = () => {
     setLastKey(products.at(products.length - 1).id);
-    // console.log(products.length);
   };
   return (
     <>
@@ -34,11 +44,9 @@ export default function Products() {
           itemList.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        <Button
-          text="more"
-          onClick={() => handleLoadMore()}
-          disabled={!hasMore}
-        />
+        {hasMore && (
+          <Button text="LOAD MORE" onClick={() => handleLoadMore()} />
+        )}
       </Container>
     </>
   );

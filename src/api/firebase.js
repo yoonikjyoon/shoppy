@@ -14,14 +14,11 @@ import {
   get,
   query,
   remove,
-  limitToLast,
   limitToFirst,
   startAfter,
-  endAt,
-  orderBy,
-  orderByKey,
-  startAt,
+  equalTo,
   orderByChild,
+  orderByKey,
 } from "firebase/database";
 
 const firebaseConfig = {
@@ -66,42 +63,60 @@ async function adminUser(user) {
     });
 }
 
-// export async function getProducts(category) {
-//   return get(ref(database, "products")).then((snapshot) => {
+const databaseRef = ref(database, "products");
+const ITEMS_PER_PAGE = 12;
+const limitItem = limitToFirst(ITEMS_PER_PAGE);
+
+// export async function getAllProducts(lastKey) {
+//   let getQuery = "";
+//   if (lastKey) {
+//     getQuery = query(databaseRef, orderByKey(), startAfter(lastKey), limitItem);
+//   } else {
+//     getQuery = query(databaseRef, limitItem);
+//   }
+//   return get(getQuery).then((snapshot) => {
 //     if (snapshot.exists()) {
-//       if (category) {
-//         const data = Object.values(snapshot.val()).filter(
-//           (item) => item.category === category
-//         );
-//         return data;
-//       } else {
-//         return Object.values(snapshot.val());
-//       }
+//       const itemList = Object.values(snapshot.val());
+//       return itemList;
 //     }
 //     return [];
 //   });
 // }
-const ITEMS_PER_PAGE = 12;
+// export async function getCategoryProduct(category) {
+//   return get(query(databaseRef, or))
+// }
 export async function getProducts(category, lastKey) {
-  // console.log(lastKey);
-  const limit = lastKey
-    ? query(
-        ref(database, "products"),
-        orderByKey(),
-        startAfter(lastKey),
-        limitToFirst(ITEMS_PER_PAGE)
-      )
-    : query(ref(database, "products"), limitToFirst(ITEMS_PER_PAGE));
-  return get(limit).then((snapshot) => {
+  // let getQuery = "";
+  // const categoryQuery = equalTo(category);
+  // const loadMoreItemQuery = startAfter(lastKey);
+  // console.log(category, lastKey);
+  // if (category && lastKey) {
+  //   console.log("44444");
+  //   getQuery = query(
+  //     databaseRef,
+  //     orderByChild("category"),
+  //     loadMoreItemQuery,
+  //     limitItem
+  //   );
+  // } else if (!category && lastKey) {
+  //   console.log("222222");
+  //   getQuery = query(databaseRef, orderByKey(), loadMoreItemQuery, limitItem);
+  // } else if (category && !lastKey) {
+  //   console.log("33333");
+  //   getQuery = query(
+  //     databaseRef,
+  //     orderByChild("category"),
+  //     categoryQuery,
+  //     limitItem
+  //   );
+  // } else {
+  //   console.log("11111");
+  //   getQuery = query(databaseRef, limitItem);
+  // }
+  return get(query(databaseRef, orderByKey(), limitItem)).then((snapshot) => {
     if (snapshot.exists()) {
-      // console.log(lastKey, "---", snapshot.val());
       const itemList = Object.values(snapshot.val());
-      if (category) {
-        const data = itemList.filter((item) => item.category === category);
-        return data;
-      } else {
-        return itemList;
-      }
+      return itemList;
     }
     return [];
   });
