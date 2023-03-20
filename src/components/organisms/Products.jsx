@@ -9,32 +9,34 @@ export default function Products() {
   const { type } = useParams();
   const category = type && type.charAt(0).toUpperCase() + type.slice(1);
   const [lastKey, setLastKey] = useState(null);
-  const {
-    productsQuery: { isLoading, error, data: products },
-  } = useProducts(category, lastKey);
   const [itemList, setItemList] = useState([]);
   const [hasMore, setHasMore] = useState(true);
+  const {
+    productsQuery: { isLoading, error, data: allProducts },
+  } = useProducts(lastKey);
+  // const {
+  //   productCategoryQuery: { isLoading, error, data: categoryProducts },
+  // } = useProducts(category);
 
   // useEffect(() => {
-  //   console.log("category : ", category);
-  //   setItemList([]);
-  // }, [category]);
-
+  //   console.log(categoryProducts, category);
+  // }, [categoryProducts, category]);
   useEffect(() => {
-    console.log("~~~~");
-    if (products) {
-      console.log(products.length, isLoading, products);
+    if (allProducts) {
+      console.log(allProducts.length, isLoading, allProducts);
       setHasMore(true);
-      setItemList([...itemList, ...Object.values(products)]);
+      setItemList([...itemList, ...Object.values(allProducts)]);
     } else {
       console.log("end", isLoading);
+      console.log("end");
       setHasMore(false);
     }
-  }, [products]);
+  }, [allProducts]);
 
   const handleLoadMore = () => {
-    setLastKey(products.at(products.length - 1).id);
+    setLastKey(allProducts.at(allProducts.length - 1).id);
   };
+
   return (
     <>
       {isLoading && <p>Loading...</p>}

@@ -1,27 +1,25 @@
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  useInfiniteQuery,
-} from "@tanstack/react-query";
-import { getProducts as fetchProducts, addNewProduct } from "../api/firebase";
+  getAllProducts as fetchAllProducts,
+  getCategoryProducts as fetchCategoryProducts,
+  addNewProduct,
+} from "../api/firebase";
 
-export default function useProducts(category, lastKey) {
+export default function useProducts(lastKey, category) {
   const queryClient = useQueryClient();
 
   const productsQuery = useQuery(
-    ["products", category || "", lastKey],
-    () => fetchProducts(category, lastKey),
+    ["allProducts", lastKey],
+    () => fetchAllProducts(lastKey),
     {
       staleTime: 1000 * 60,
     }
   );
-  // const productsQuery = useInfiniteQuery(
-  //   ["products", category || ""],
-  //   () => fetchProducts(category, lastKey),
+  // const productCategoryQuery = useQuery(
+  //   ["categoryProducts", category],
+  //   () => fetchCategoryProducts(category),
   //   {
   //     staleTime: 1000 * 60,
-
   //   }
   // );
 
