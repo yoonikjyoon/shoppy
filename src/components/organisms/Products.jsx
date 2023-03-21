@@ -10,31 +10,19 @@ export default function Products() {
   const category = type && type.charAt(0).toUpperCase() + type.slice(1);
   const [lastKey, setLastKey] = useState(null);
   const [itemList, setItemList] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
   const {
-    productsQuery: { isLoading, error, data: allProducts },
-  } = useProducts(lastKey);
-  // const {
-  //   productCategoryQuery: { isLoading, error, data: categoryProducts },
-  // } = useProducts(category);
+    productsQuery: { isLoading, error, data: products },
+  } = useProducts(category, lastKey);
 
-  // useEffect(() => {
-  //   console.log(categoryProducts, category);
-  // }, [categoryProducts, category]);
   useEffect(() => {
-    if (allProducts) {
-      console.log(allProducts.length, isLoading, allProducts);
-      setHasMore(true);
-      setItemList([...itemList, ...Object.values(allProducts)]);
-    } else {
-      console.log("end", isLoading);
-      console.log("end");
-      setHasMore(false);
+    if (products) {
+      const items = products.itemList;
+      setItemList([...itemList, ...items]);
     }
-  }, [allProducts]);
+  }, [products]);
 
   const handleLoadMore = () => {
-    setLastKey(allProducts.at(allProducts.length - 1).id);
+    setLastKey(products.lastKey);
   };
 
   return (
@@ -46,7 +34,7 @@ export default function Products() {
           itemList.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        {hasMore && (
+        {products && products.hasNextPage && (
           <Button text="LOAD MORE" onClick={() => handleLoadMore()} />
         )}
       </Container>

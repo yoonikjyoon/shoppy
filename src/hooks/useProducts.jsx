@@ -5,23 +5,24 @@ import {
   addNewProduct,
 } from "../api/firebase";
 
-export default function useProducts(lastKey, category) {
+export default function useProducts(category, lastKey = null) {
   const queryClient = useQueryClient();
 
+  const fetchProducts = () => {
+    if (category) {
+      return fetchCategoryProducts(category, lastKey);
+    } else {
+      return fetchAllProducts(lastKey);
+    }
+  };
+
   const productsQuery = useQuery(
-    ["allProducts", lastKey],
-    () => fetchAllProducts(lastKey),
+    ["products", category, lastKey],
+    fetchProducts,
     {
       staleTime: 1000 * 60,
     }
   );
-  // const productCategoryQuery = useQuery(
-  //   ["categoryProducts", category],
-  //   () => fetchCategoryProducts(category),
-  //   {
-  //     staleTime: 1000 * 60,
-  //   }
-  // );
 
   const addProduct = useMutation(
     ({ product, url }) => addNewProduct(product, url),

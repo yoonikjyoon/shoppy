@@ -65,48 +65,68 @@ async function adminUser(user) {
 }
 
 const databaseRef = ref(database, "products");
-const ITEMS_PER_PAGE = 12;
-const limitItem = limitToFirst(ITEMS_PER_PAGE);
+const PAGE_SIZE = 10;
 
-export async function getAllProducts(lastKey) {
+export async function getAllProducts(lastKey = null) {
   let getAllQuery = "";
   if (lastKey) {
     getAllQuery = query(
       databaseRef,
       orderByKey(),
       startAfter(lastKey),
-      limitItem
+      limitToFirst(PAGE_SIZE + 1)
     );
   } else {
-    getAllQuery = query(databaseRef, limitItem);
+    getAllQuery = query(databaseRef, limitToFirst(PAGE_SIZE + 1));
   }
-  return get(getAllQuery).then((snapshot) => {
-    if (snapshot.exists()) {
-      const itemList = Object.values(snapshot.val());
-      return itemList;
+  const snapshot = await get(getAllQuery);
+  if (snapshot.exists()) {
+    const itemList = Object.values(snapshot.val());
+    const hasNextPage = itemList.length > PAGE_SIZE;
+    if (hasNextPage) {
+      itemList.pop();
     }
-    return [];
-  });
+    return {
+      itemList,
+      hasNextPage,
+      lastKey: hasNextPage ? itemList[itemList.length - 1].id : null,
+    };
+  }
+  return { itemList: [], lastKey: null };
 }
 
-export async function getCategoryProducts(category) {
-  let getCategoryQuery = "";
-  if (category) {
-    getCategoryQuery = query(
+export async function getCategoryProducts(category, lastKey = null) {
+  let productsQuery = "";
+  if (lastKey) {
+    productsQuery = query(
+      databaseRef,
+      orderByChild(`category`),
+      startAfter(category, lastKey),
+      limitToFirst(PAGE_SIZE + 1)
+    );
+  } else {
+    productsQuery = query(
       databaseRef,
       orderByChild("category"),
       equalTo(category),
-      limitItem
+      limitToFirst(PAGE_SIZE + 1)
     );
   }
-  return get(getCategoryQuery).then((snapshot) => {
-    if (snapshot.exists()) {
-      const itemList = Object.values(snapshot.val());
-      console.log("getCategoryItem : ", itemList);
-      return itemList;
+  const snapshot = await get(productsQuery);
+  if (snapshot.exists()) {
+    const itemList = Object.values(snapshot.val());
+    const hasNextPage = itemList.length > PAGE_SIZE;
+    if (hasNextPage) {
+      itemList.pop();
     }
-    return [];
-  });
+
+    return {
+      itemList,
+      hasNextPage,
+      lastKey: hasNextPage ? itemList[itemList.length - 1].id : null,
+    };
+  }
+  return { itemList: [], lastKey: null };
 }
 
 export async function addNewProduct(product, image) {
