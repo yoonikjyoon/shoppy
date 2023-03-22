@@ -34,10 +34,12 @@ export default function Products() {
           itemList.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-        {products && products.hasNextPage && (
-          <Button text="LOAD MORE" onClick={() => handleLoadMore()} />
-        )}
       </Container>
+      {products && products.hasNextPage && (
+        <ButtonWrap>
+          <Button text="LOAD MORE" onClick={() => handleLoadMore()} />
+        </ButtonWrap>
+      )}
     </>
   );
 }
@@ -57,4 +59,8 @@ const Container = styled.ul`
   @media (min-width: 1280px) {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
+`;
+const ButtonWrap = styled.div`
+  margin-top: 40px;
+  text-align: center;
 `;

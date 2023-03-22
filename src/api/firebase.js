@@ -19,7 +19,6 @@ import {
   equalTo,
   orderByChild,
   orderByKey,
-  startAt,
 } from "firebase/database";
 
 const firebaseConfig = {
@@ -65,7 +64,7 @@ async function adminUser(user) {
 }
 
 const databaseRef = ref(database, "products");
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 12;
 
 export async function getAllProducts(lastKey = null) {
   let getAllQuery = "";
