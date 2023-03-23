@@ -7,9 +7,7 @@ export default function Home() {
   return (
     <Container>
       <HomeBanner />
-      <ProductContainer>
-        <Products />
-      </ProductContainer>
+      <ProductContainer>{/* <Products /> */}</ProductContainer>
     </Container>
   );
 }

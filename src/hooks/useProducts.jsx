@@ -8,7 +8,7 @@ import {
 export default function useProducts(category, lastKey = null) {
   const queryClient = useQueryClient();
 
-  const fetchProducts = () => {
+  const fetchProducts = (category, lastKey) => {
     if (category) {
       return fetchCategoryProducts(category, lastKey);
     } else {
@@ -18,7 +18,7 @@ export default function useProducts(category, lastKey = null) {
 
   const productsQuery = useQuery(
     ["products", category, lastKey],
-    fetchProducts,
+    () => fetchProducts(category, lastKey),
     {
       staleTime: 1000 * 60,
     }

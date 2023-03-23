@@ -19,6 +19,7 @@ import {
   equalTo,
   orderByChild,
   orderByKey,
+  startAt,
 } from "firebase/database";
 
 const firebaseConfig = {
@@ -91,7 +92,7 @@ export async function getAllProducts(lastKey = null) {
       lastKey: hasNextPage ? itemList[itemList.length - 1].id : null,
     };
   }
-  return { itemList: [], lastKey: null };
+  return { itemList: [], lastKey: null, hasNextPage: null };
 }
 
 export async function getCategoryProducts(category, lastKey = null) {
@@ -99,8 +100,8 @@ export async function getCategoryProducts(category, lastKey = null) {
   if (lastKey) {
     productsQuery = query(
       databaseRef,
-      orderByChild(`category`),
-      startAfter(category, lastKey),
+      orderByChild("category"),
+      startAt(category, lastKey),
       limitToFirst(PAGE_SIZE + 1)
     );
   } else {
@@ -113,19 +114,23 @@ export async function getCategoryProducts(category, lastKey = null) {
   }
   const snapshot = await get(productsQuery);
   if (snapshot.exists()) {
-    const itemList = Object.values(snapshot.val());
+    const itemList = Object.values(snapshot.val()).filter(
+      (item) => item.category === category
+    );
     const hasNextPage = itemList.length > PAGE_SIZE;
+    let nextPageKey = "";
     if (hasNextPage) {
+      nextPageKey = itemList[itemList.length - 1].id;
       itemList.pop();
     }
 
     return {
       itemList,
       hasNextPage,
-      lastKey: hasNextPage ? itemList[itemList.length - 1].id : null,
+      lastKey: hasNextPage ? nextPageKey : null,
     };
   }
-  return { itemList: [], lastKey: null };
+  return { itemList: [], lastKey: null, hasNextPage: null };
 }
 
 export async function addNewProduct(product, image) {

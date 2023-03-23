@@ -1,43 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProductCard from "../molecules/ProductCard";
 import styled from "styled-components";
-import useProducts from "../../hooks/useProducts";
-import { useParams } from "react-router-dom";
 import Button from "../atoms/Button";
 
-export default function Products() {
-  const { type } = useParams();
-  const category = type && type.charAt(0).toUpperCase() + type.slice(1);
-  const [lastKey, setLastKey] = useState(null);
-  const [itemList, setItemList] = useState([]);
-  const {
-    productsQuery: { isLoading, error, data: products },
-  } = useProducts(category, lastKey);
-
-  useEffect(() => {
-    if (products) {
-      const items = products.itemList;
-      setItemList([...itemList, ...items]);
-    }
-  }, [products]);
-
-  const handleLoadMore = () => {
-    setLastKey(products.lastKey);
-  };
-
+export default function Products({ itemList, hasNextPage, handleLoadMore }) {
   return (
     <>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
       <Container>
         {itemList.length > 0 &&
           itemList.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
       </Container>
-      {products && products.hasNextPage && (
+      {hasNextPage && (
         <ButtonWrap>
-          <Button text="LOAD MORE" onClick={() => handleLoadMore()} />
+          <Button text="LOAD MORE" onClick={handleLoadMore} />
         </ButtonWrap>
       )}
     </>
