@@ -31,7 +31,7 @@ Click to check out 👉 (https://yooni-shoppy.netlify.app/)
 This project is still in its early stages and serves as a foundation for more advanced features. Some points that could be improved : 
 - [ ] Add Sign in feature
 - [ ] Add loading and error pages
-- [ ] Partial data retrieval from the server to improve initial loading speed (infinite scroll)
+- [X] ~~Partial data retrieval from the server to improve initial loading speed (infinite scroll)~~
 - [ ] Add test account for Admin page
 - [ ] Improve UI/UX when users add items to the shopping cart or the admin users add new products
 - [ ] Improve CRUD features on Admin page
