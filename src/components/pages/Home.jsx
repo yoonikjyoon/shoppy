@@ -8,7 +8,7 @@ export default function Home() {
   const [lastKey, setLastKey] = useState(null);
   const [itemList, setItemList] = useState([]);
   const {
-    productsQuery: { isLoading, error, data: products },
+    productsQuery: { data: products },
   } = useProducts("", lastKey);
 
   useEffect(() => {
@@ -26,8 +26,6 @@ export default function Home() {
     <Container>
       <HomeBanner />
       <ProductContainer>
-        {isLoading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
         {products && (
           <Products
             itemList={itemList}
@@ -40,7 +38,8 @@ export default function Home() {
   );
 }
 const Container = styled.div`
-  width: 100%;
+  width: 100vw;
+  min-height: 100vh;
   margin-top: 3.5rem;
 `;
 const ProductContainer = styled.div`
