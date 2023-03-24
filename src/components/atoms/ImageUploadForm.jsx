@@ -9,12 +9,12 @@ export default function ImageUploadForm({ file, handleChange }) {
         {file ? (
           <InputImage src={URL.createObjectURL(file)} alt="local file" />
         ) : (
-          <p>대표 사진을 업로드 해주세요</p>
+          <p>Please select a main image</p>
         )}
         <StyledPadding height={15} />
         {/* label tag */}
         <InputButton htmlFor="file">
-          파일 선택
+          choose a file
           <input
             type="file"
             id="file"

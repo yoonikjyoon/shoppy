@@ -30,7 +30,7 @@ export default function NewProduct() {
           { product, url },
           {
             onSuccess: () => {
-              setSuccess("성공적으로 제품이 추가되었습니다.");
+              setSuccess("The product has been sucessfully added!");
               setTimeout(() => {
                 setSuccess(null);
               }, 4000);
@@ -42,47 +42,47 @@ export default function NewProduct() {
   };
   return (
     <Container>
-      <StyledTitle>새로운 제품 등록</StyledTitle>
+      <StyledTitle>ADD NEW PRODUCT</StyledTitle>
       {success && <p>✅{success}</p>}
       <StyledForm onSubmit={handleSubmit}>
         <ImageUploadForm file={file} handleChange={handleChange} />
         <AnimatedInputForm
           type="text"
           name="title"
-          text="제품명"
+          text="Name"
           value={product.title || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="number"
           name="price"
-          text="가격"
+          text="Price"
           value={product.price || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="text"
           name="category"
-          text="카테고리"
+          text="Category"
           value={product.category || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="text"
           name="description"
-          text="제품 설명"
+          text="Description"
           value={product.description || ""}
           handleChange={handleChange}
         />
         <AnimatedInputForm
           type="text"
           name="options"
-          text="옵션들 [콤마(,)로 구분]"
+          text="Options - seperated by comma(,)"
           value={product.options || ""}
           handleChange={handleChange}
         />
         <Button
-          text={isUploading ? "업로드중..." : "제품 등록하기"}
+          text={isUploading ? "Uploading..." : "ADD"}
           type="submit"
           disabled={isUploading}
         />
